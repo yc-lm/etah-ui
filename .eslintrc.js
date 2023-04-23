@@ -1,39 +1,112 @@
 module.exports = {
-    root: true,
-    env: {},
-    parser: 'vue-eslint-parser',
-    parserOptions: {
-        parser: '@typescript-eslint/parser',
-        ecmaVersion: 2020,
-        sourceType: 'module'
+  root: true,
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
+  },
+  parser: 'vue-eslint-parser',
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    jsxPragma: 'React',
+    ecmaFeatures: {
+      jsx: true,
+      tsx: true,
     },
-    settings: {
-        'import/resolver': {
-            webpack: {
-                config: 'build/config/base.js',
-            },
-        },
+  },
+  plugins: ['@typescript-eslint', 'prettier', 'import'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:vue/vue3-recommended',
+    'prettier',
+  ],
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx', '*.vue'],
+      rules: {
+        'no-undef': 'off',
+      },
     },
-    extends: ['plugin:vue/vue3-recommended', 'plugin:prettier/recommended','plugin:@typescript-eslint/recommended'],
-    rules: {
-        '@typescript-eslint/ban-ts-comment': 0,
-        // prop传递的参数必须有默认值
-        'vue/require-default-prop': 0,
-        'vue/eqeqeq': 'error', // template 里面强制使用===,!==
-        'vue/html-closing-bracket-newline': [
-            'error',
-            {
-                singleline: 'never',
-                multiline: 'always'
-            }
+  ],
+  rules: {
+    // js/ts
+    // 'no-console': ['warn', { allow: ['error'] }],
+    'no-restricted-syntax': ['error', 'LabeledStatement', 'WithStatement'],
+    camelcase: ['error', { properties: 'never' }],
+
+    'no-var': 'error',
+    'no-empty': ['error', { allowEmptyCatch: true }],
+    'no-void': 'error',
+    'prefer-const': ['warn', { destructuring: 'all', ignoreReadBeforeAssign: true }],
+    'prefer-template': 'error',
+    'object-shorthand': ['error', 'always', { ignoreConstructors: false, avoidQuotes: true }],
+    'block-scoped-var': 'error',
+    'no-constant-condition': ['error', { checkLoops: false }],
+
+    'no-redeclare': 'off',
+    '@typescript-eslint/no-redeclare': 'error',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
+    // '@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+      },
+    ],
+    'no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+      },
+    ],
+
+    // vue
+    'vue/no-v-html': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/require-explicit-emits': 'off',
+    'vue/multi-word-component-names': 'off',
+
+    // prettier
+    'prettier/prettier': 'error',
+
+    // import
+    'import/first': 'error',
+    'import/no-duplicates': 'error',
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
+
+        pathGroups: [
+          {
+            pattern: 'vue',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: '@vue/**',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: 'ant-design-vue',
+            group: 'internal',
+          },
         ],
-        // 组件命名强制驼峰
-        'vue/multi-word-component-names': 0,
-        '@typescript-eslint/no-var-requires': 0,
-        'vue/max-attributes-per-line': 0,
-        '@typescript-eslint/no-explicit-any': 0,
-        // 自动闭合空标签
-        '@typescript-eslint/no-non-null-assertion': 0,
-        'vue/valid-v-for': 0
-    }
+        pathGroupsExcludedImportTypes: ['type'],
+      },
+    ],
+  },
 };

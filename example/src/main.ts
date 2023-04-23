@@ -2,9 +2,9 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import { setupRouter } from './router';
 // element样式
-import 'element-plus/dist/index.css';
+//import 'element-plus/dist/index.css';
 // 公共样式库
-//import 'etah-styles/index.scss';
+import 'etah-styles/index.scss';
 //import './styles/index.scss';
 import test from '@packages/index';
 

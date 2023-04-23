@@ -3,6 +3,7 @@
  * 不写根据路由自动生成了，赶时间.
  * 可以参考路由引入方式自动引入，结构更清晰
  */
+import HomeRouters from '@example/router/modules/view';
 
 interface IMenuItem {
 	// 绑定的路由路劲
@@ -15,47 +16,18 @@ interface IMenuItem {
 	isActive?: boolean;
 }
 
-const menuList = [
-	{
-		path: '/blackboardSetting',
-		name: '板书设置',
-		icon: 'blackboard'
-	},
-	{
-		path: '/displayOutput',
-		name: '显示输出',
-		icon: 'displayOutput'
-	},
-	{
-		path: '/networkConfiguration',
-		name: '网络配置',
-		icon: 'networkConfiguration'
-	},
-	{
-		path: '/platformBinding',
-		name: '平台绑定',
-		icon: 'platformBinding'
-	},
-	// {
-	// 	path: '/simulationDebugging',
-	// 	name: '模拟调试',
-	// 	icon: 'simulationDebugging'
-	// },
-	// {
-	// 	path: '/dataStatistics',
-	// 	name: '数据统计',
-	// 	icon: ''
-	// },
-	{
-		path: '/systemInfo',
-		name: '系统信息',
-		icon: 'systemInfo'
-	}
-] as IMenuItem[];
+const menuList: IMenuItem[] = [];
 
 export function getMenuList() {
-	return menuList.map(item => ({
-		...item,
-		isActive: false
-	}));
+	const homeBaseUrl = HomeRouters.path;
+	HomeRouters.children?.forEach((item: any) => {
+		const path = homeBaseUrl + '/' + item.path;
+		menuList.push({
+			path,
+			name: item.name,
+			icon: '',
+			isActive: false
+		});
+	});
+	return menuList;
 }

@@ -1,23 +1,23 @@
 <template>
 	<div class="flex h-100p">
-		<el-container>
-			<el-header>
+		<div>
+			<header>
 				<Header />
-			</el-header>
-			<el-container>
-				<el-aside width="220px">
+			</header>
+
+			<div class="flex">
+				<div style="width: 220px">
 					<Menu />
-				</el-aside>
-				<el-main>
+				</div>
+				<main>
 					<Main />
-				</el-main>
-			</el-container>
-		</el-container>
+				</main>
+			</div>
+		</div>
 	</div>
 </template>
 
 <script lang="ts" setup>
-import { ElContainer, ElAside, ElHeader, ElMain } from 'element-plus';
 import Header from './header/index.vue';
 import Menu from './menu/index.vue';
 import Main from './main/index.vue';

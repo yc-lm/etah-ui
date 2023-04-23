@@ -9,8 +9,8 @@ const ViewInfo: RouteRecordRaw = {
 	children: [
 		{
 			path: 'index',
-			name: 'index',
-			component: () => import(/* webpackChunkName: "PictureSet" */ '@example/views/home/index.vue'),
+			name: 'homeIndex',
+			component: () => import(/* webpackChunkName: "HomeIndex" */ '@example/views/home/index.vue'),
 			meta: {
 				title: '首页'
 			}
