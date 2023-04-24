@@ -12,6 +12,10 @@ module.exports = merge(baseWebpackConfig, cssWebpackConfig, {
 
 	devtool: 'eval-cheap-module-source-map',
 
+  entry: {
+    app: './example/src/main.ts'
+  },
+
 	cache: {
 		type: 'filesystem',
 		allowCollectingMemory: true,

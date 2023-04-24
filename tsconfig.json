@@ -18,19 +18,18 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    // 禁用原因：1.很多回调方法会给多个参数 2.有的参数编辑器未能识别已经使用
+    "noUnusedParameters": false,
     "experimentalDecorators": true,
     "lib": ["dom", "esnext"],
     "noImplicitAny": false,
     "skipLibCheck": true,
     "removeComments": true,
-    "types": ["webpack-env", "unplugin-vue-define-options/macros-global"],
     "paths": {
       "@/*": ["src/*"]
     }
   },
   "include": [
-    "mock/**/*",
     "src/**/*.ts",
     "**/*.d.ts",
     "src/**/*.tsx",
@@ -38,5 +37,12 @@
     "types/**/*.d.ts",
     "types/**/*.ts"
   ],
-  "exclude": ["node_modules", "dist", "**/*.js", "**/*.md", "src/**/*.md"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "dist",
+    "**/*.js",
+    "**/*.md",
+    "src/**/*.md"
+  ]
 }

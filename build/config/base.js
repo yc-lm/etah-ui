@@ -29,10 +29,6 @@ module.exports = {
 		publicPath: config.dev.publicPath,
 		filename: outputFileName,
 		chunkFilename: outputFileName,
-
-		library: `${packageName}-[name]`,
-		libraryTarget: 'umd', // bundle the micro app into umd library format
-		chunkLoadingGlobal: `webpackJsonp_${packageName}`
 	},
 
 	resolve: {
