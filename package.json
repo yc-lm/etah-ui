@@ -1,5 +1,6 @@
 {
-	"name": "webpack5-vue3",
+	"name": "etah-ui",
+	"main": "lib/index.js",
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
