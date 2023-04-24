@@ -10,7 +10,7 @@ function copyDirectory(src, dest) {
 	var files = fs.readdirSync(src);
 	files.forEach((item, index) => {
 		var itemPath = path.join(src, item);
-		var itemStat = fs.statSync(itemPath);// 获取文件信息
+		var itemStat = fs.statSync(itemPath); // 获取文件信息
 		var savedPath = path.join(dest, itemPath.replace(src, ''));
 		var savedDir = savedPath.substring(0, savedPath.lastIndexOf('\\'));
 		if (itemStat.isFile()) {
@@ -77,4 +77,3 @@ module.exports = {
 	copyDirectory,
 	delDirectory
 };
-
