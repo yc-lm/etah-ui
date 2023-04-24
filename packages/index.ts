@@ -1,6 +1,6 @@
 import type { App } from 'vue';
 import { parseName } from '@/common/utils/packageInstall';
-import TestButton from './test';
+import TestButton from './TestButton';
 
 const components = [TestButton];
 

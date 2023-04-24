@@ -6,6 +6,8 @@ const TerserPlugin = require('terser-webpack-plugin');
 const baseWebpackConfig = require('./base');
 const cssWebpackConfig = require('./css');
 const config = require('../project.config');
+const paths = require('../utils/paths');
+const entry = require('../utils/getEntry');
 const terserOptions = require('./terserOptions');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // gzip
@@ -20,34 +22,27 @@ if (original && original.length && original[0] === 'build:rp') {
 	plugins.push(new BundleAnalyzerPlugin());
 }
 
+const entryPath = './packages/**/*.ts';
+
 module.exports = merge(baseWebpackConfig, cssWebpackConfig, {
 	mode: 'production',
 
+	entry: entry.getEntry(entryPath),
+
 	output: {
-		publicPath: config.build.publicPath
+		path: paths.resolve('lib'),
+		filename: pathData => {
+			return pathData.chunk.name === 'index' ? '[name].js' : '[name]/index.js';
+		},
+		library: {
+			type: 'umd',
+			export: 'default'
+		}
 	},
 
 	optimization: {
 		minimize: true,
-		minimizer: [new TerserPlugin(terserOptions())],
-		moduleIds: 'deterministic',
-		splitChunks: {
-			cacheGroups: {
-				defaultVendors: {
-					name: `chunk-vendors`,
-					test: /[\\/]node_modules[\\/]/,
-					priority: -10,
-					chunks: 'initial'
-				},
-				common: {
-					name: `chunk-common`,
-					minChunks: 2,
-					priority: -20,
-					chunks: 'initial',
-					reuseExistingChunk: true
-				}
-			}
-		}
+		minimizer: [new TerserPlugin(terserOptions())]
 	},
 
 	plugins: plugins.concat([
