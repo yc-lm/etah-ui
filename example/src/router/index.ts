@@ -56,6 +56,8 @@ export const NO_MENU_ROUTER_NAME = ['Login', 'Root', 'Demo'];
 // 自动引入路由
 function introduceRouterModules(): RouteRecordRaw[] {
 	const menuRouters: RouteRecordRaw[] = [];
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
 	const moduleFiles = require.context('./modules', true, /\.ts$/);
 	moduleFiles.keys().forEach(key => {
 		menuRouters.push(moduleFiles(key).default);

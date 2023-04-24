@@ -26,23 +26,25 @@
     "skipLibCheck": true,
     "removeComments": true,
     "paths": {
-      "@/*": ["src/*"]
+      // 用于设置模块名称到基于baseUrl的路径映射
+      "@/*": ["./*"],
+      "@packages/*": ["packages/*"],
+      "@example/*": ["example/src/*"],
+      "@common/*": ["common/*"]
     }
   },
   "include": [
-    "src/**/*.ts",
-    "**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
+    "packages/**/*.ts",
+    "packages/**/*.vue",
+    "example/**/*.ts",
+    "example/**/*.vue",
     "types/**/*.d.ts",
-    "types/**/*.ts"
+    "types/*.d.ts",
+    "common/**/*.ts"
   ],
   "exclude": [
     "node_modules",
     "dist",
-    "dist",
-    "**/*.js",
-    "**/*.md",
-    "src/**/*.md"
+    "**/*.js"
   ]
 }

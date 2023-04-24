@@ -18,9 +18,9 @@
 </template>
 
 <script lang="ts" setup>
-import Header from './header/index.vue';
-import Menu from './menu/index.vue';
-import Main from './main/index.vue';
+import Header from './header/headerIndex.vue';
+import Menu from './menu/menuIndex.vue';
+import Main from './main/mainIndex.vue';
 </script>
 
 <style lang="scss" scoped>

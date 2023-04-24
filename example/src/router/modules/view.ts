@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router';
-import Layout from '@example/layout/index.vue';
+import Layout from '@example/layout/layoutIndex.vue';
 
 const ViewInfo: RouteRecordRaw = {
 	path: '/home',
@@ -10,7 +10,7 @@ const ViewInfo: RouteRecordRaw = {
 		{
 			path: 'index',
 			name: 'homeIndex',
-			component: () => import(/* webpackChunkName: "HomeIndex" */ '@example/views/home/index.vue'),
+			component: () => import(/* webpackChunkName: "HomeIndex" */ '@example/views/home/homeIndex.vue'),
 			meta: {
 				title: '首页'
 			}

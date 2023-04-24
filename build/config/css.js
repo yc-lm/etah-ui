@@ -61,8 +61,8 @@ const genStyleRules = () => {
 		createCSSRule(/\.css$/),
 		createCSSRule(/\.p(ost)?css$/),
 		createCSSRule(/\.scss$/, 'sass-loader', {
-			sourceMap: false
-			//prependData: `@import "common/styles/var.scss";`
+			sourceMap: false,
+			prependData: `@import "etah-styles/common/variables.scss";`
 		})
 	];
 };

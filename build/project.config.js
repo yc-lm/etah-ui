@@ -1,14 +1,14 @@
-'use strict'
+'use strict';
 
 module.exports = {
-  outputDir: 'dist',
+	outputDir: 'dist',
 
-  dev: {
-    publicPath: '/',
-    port: 8090,
-  },
+	dev: {
+		publicPath: '/',
+		port: 8091
+	},
 
-  build: {
-    publicPath: '/',
-  },
-}
+	build: {
+		publicPath: '/'
+	}
+};

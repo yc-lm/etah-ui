@@ -4,8 +4,6 @@ const { DefinePlugin } = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
-const HTMLPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const defineOptions = require('unplugin-vue-define-options/webpack');
 const webpack = require('webpack');
 
@@ -20,20 +18,19 @@ const outputFileName = `js/[name]${isProd ? '.[contenthash:8]' : ''}.js`;
 module.exports = {
 	context: process.cwd(),
 
-	entry: {
-		app: './src/main.ts'
-	},
-
 	output: {
 		path: paths.resolve(config.outputDir),
 		publicPath: config.dev.publicPath,
 		filename: outputFileName,
-		chunkFilename: outputFileName,
+		chunkFilename: outputFileName
 	},
 
 	resolve: {
 		alias: {
-			'@': paths.resolve('src')
+			'@': paths.resolve(''),
+			'@example': paths.resolve('example/src'),
+			'@packages': paths.resolve('packages'),
+			'@common': paths.resolve('common')
 		},
 		extensions: ['.ts', '.tsx', '.js', '.jsx', '.vue', '.json']
 	},
@@ -47,27 +44,6 @@ module.exports = {
 		}),
 		new VueLoaderPlugin(),
 		new CaseSensitivePathsPlugin(),
-		new HTMLPlugin({
-			template: paths.resolve('public/index.html'),
-			templateParameters: {
-				...resolveClientEnv(
-					{ publicPath: isProd ? config.build.publicPath : config.dev.publicPath },
-					true /* raw */
-				)
-			}
-		}),
-		new CopyPlugin({
-			patterns: [
-				{
-					from: paths.resolve('public'),
-					toType: 'dir',
-					globOptions: {
-						ignore: ['.DS_Store', '**/index.html']
-					},
-					noErrorOnMissing: true
-				}
-			]
-		}),
 		new DefinePlugin({
 			// vue3 feature flags <http://link.vuejs.org/feature-flags>
 			__VUE_OPTIONS_API__: 'true',
@@ -78,9 +54,9 @@ module.exports = {
 			})
 		}),
 		// use defineOptions https://github.com/sxzz/unplugin-vue-define-options
-		defineOptions({
+		/*defineOptions({
 			include: [/\.vue$/, /\.vue\?vue/]
-		}),
+		}),*/
 
 		// mqtt buffer
 		new webpack.ProvidePlugin({

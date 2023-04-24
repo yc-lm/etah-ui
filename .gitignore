@@ -25,3 +25,5 @@ yarn-error.log*
 *.diff
 *.patch
 *.bak
+package-lock.json
+/lib

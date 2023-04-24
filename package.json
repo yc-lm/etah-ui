@@ -26,7 +26,8 @@
 		"ant-design-vue": "3.2.15",
 		"axios": "~1.2.0",
 		"dayjs": "~1.11.6",
-		"echarts": "^5.4.0"
+		"echarts": "^5.4.0",
+		"etah-styles": "^1.0.3"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.20.7",
