@@ -1,19 +1,12 @@
 import type { App } from 'vue';
 import type { defineComponent } from 'vue';
 
-export const withInstall = (component: ReturnType<typeof defineComponent>, alias?: string) => {
-	component.install = (app: App): void => {
-		app.component(component.name, component);
-		if (alias) {
-			app.config.globalProperties[alias] = component;
-		}
+export const withInstall = (component: ReturnType<typeof defineComponent>) => {
+	const comp: ReturnType<typeof defineComponent> & { install(app: App): void } = component;
+	comp.install = function (app) {
+		app.component(comp.displayName || parseName(component), component);
 	};
-
-	type IWithInstall = ReturnType<typeof defineComponent> & { install(app: App): void };
-
-	const _component: IWithInstall = component;
-
-	return _component;
+	return comp;
 };
 
 export function parseName(component: ReturnType<typeof defineComponent>) {

@@ -33,7 +33,8 @@ module.exports = {
 
 		// this rule, if on, would require explicit return type on the `render` function
 		'@typescript-eslint/explicit-function-return-type': 'off',
-		'vue/v-on-event-hyphenation': 'off'
+		'vue/v-on-event-hyphenation': 'off',
+		'vue/no-deprecated-v-on-native-modifier': 'off'
 	},
 
 	overrides: [
