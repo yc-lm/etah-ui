@@ -12,6 +12,6 @@ module.exports = {
 		assetsRoot: paths.resolve('lib'),
 		assetsSubDirectory: '/',
 		publicPath: '/',
-		bundleAssets2Dest: process.env.bundleAssets2Dest
+		bundleAssets2Dest: process.env.VUE_APP_BUNDLE_ASSET
 	}
 };

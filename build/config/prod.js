@@ -16,7 +16,14 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const configArgv = process.env.npm_config_argv ? JSON.parse(process.env.npm_config_argv) : {};
 const original = configArgv.original ? configArgv.original.slice(1) : [];
 
-const plugins = [];
+const plugins = [
+	new CompressionPlugin({
+		filename: '[path].gz[query]',
+		algorithm: 'gzip',
+		threshold: 10240, // 只处理比10kb大的文件
+		minRatio: 0.8 // 只有压缩比率小于这个值的资源才会被处理
+	})
+];
 // 如果是build:rp，生成报告
 if (original && original.length && original[0] === 'build:rp') {
 	plugins.push(new BundleAnalyzerPlugin());
@@ -45,12 +52,5 @@ module.exports = merge(baseWebpackConfig, cssWebpackConfig, {
 		minimizer: [new TerserPlugin(terserOptions())]
 	},
 
-	plugins: plugins.concat([
-		new CompressionPlugin({
-			filename: '[path].gz[query]',
-			algorithm: 'gzip',
-			threshold: 10240, // 只处理比10kb大的文件
-			minRatio: 0.8 // 只有压缩比率小于这个值的资源才会被处理
-		})
-	])
+	plugins: plugins
 });

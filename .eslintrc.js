@@ -46,7 +46,7 @@ module.exports = {
 	],
 	globals: {
 		__WebpackModuleApi: 'writable',
-		defineOptions: 'readonly'
+		defineOptions: 'writable'
 	},
 	// 忽略的文件
 	ignorePatterns: []

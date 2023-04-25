@@ -1,10 +1,8 @@
 'use strict';
-const packageName = require('../../package').name;
 const { DefinePlugin } = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
-const defineOptions = require('unplugin-vue-define-options/webpack');
 const webpack = require('webpack');
 
 const resolveClientEnv = require('../utils/resolveClientEnv');
@@ -43,6 +41,8 @@ module.exports = {
 			formatter: require('eslint-formatter-friendly')
 		}),
 		new VueLoaderPlugin(),
+		// use defineOptions https://github.com/sxzz/unplugin-vue-define-options
+		//require('unplugin-vue-define-options/webpack')(),
 		new CaseSensitivePathsPlugin(),
 		new DefinePlugin({
 			// vue3 feature flags <http://link.vuejs.org/feature-flags>
@@ -53,11 +53,6 @@ module.exports = {
 				publicPath: isProd ? config.build.publicPath : config.dev.publicPath
 			})
 		}),
-		// use defineOptions https://github.com/sxzz/unplugin-vue-define-options
-		/*defineOptions({
-			include: [/\.vue$/, /\.vue\?vue/]
-		}),*/
-
 		// mqtt buffer
 		new webpack.ProvidePlugin({
 			//process: 'process/browser',

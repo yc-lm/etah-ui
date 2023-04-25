@@ -21,17 +21,28 @@
     // 禁用原因：1.很多回调方法会给多个参数 2.有的参数编辑器未能识别已经使用
     "noUnusedParameters": false,
     "experimentalDecorators": true,
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "noImplicitAny": false,
     "skipLibCheck": true,
     "removeComments": true,
     "paths": {
       // 用于设置模块名称到基于baseUrl的路径映射
-      "@/*": ["./*"],
-      "@packages/*": ["packages/*"],
-      "@example/*": ["example/src/*"],
-      "@common/*": ["common/*"]
-    }
+      "@/*": [
+        "./*"
+      ],
+      "@packages/*": [
+        "packages/*"
+      ],
+      "@example/*": [
+        "example/src/*"
+      ],
+      "@common/*": [
+        "common/*"
+      ]
+    },
   },
   "include": [
     "packages/**/*.ts",

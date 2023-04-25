@@ -3,7 +3,7 @@ import type { defineComponent } from 'vue';
 
 export const withInstall = (component: ReturnType<typeof defineComponent>, alias?: string) => {
 	component.install = (app: App): void => {
-		app.component(component.name || component.displayName, component);
+		app.component(component.name, component);
 		if (alias) {
 			app.config.globalProperties[alias] = component;
 		}

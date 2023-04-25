@@ -6,7 +6,9 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue';
-
+defineOptions({
+	name: 'TestButton'
+});
 const name = ref(0);
 
 function handleClick() {
