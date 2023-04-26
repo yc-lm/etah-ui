@@ -43,6 +43,7 @@
         "common/*"
       ]
     },
+    "types": ["unplugin-vue-define-options/macros-global"]
   },
   "include": [
     "packages/**/*.ts",

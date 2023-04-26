@@ -10,11 +10,16 @@ export const withInstall = (component: ReturnType<typeof defineComponent>) => {
 };
 
 export function parseName(component: ReturnType<typeof defineComponent>) {
-	const filePath = component.__file;
+	if (component.name) {
+		return component.name;
+	}
 
 	if (component.__name) {
 		return component.__name;
 	}
+
+	const filePath = component.__file;
+
 	if (filePath) {
 		const filePathArr = filePath.split('/');
 		const filename = filePathArr[filePathArr.length - 1];

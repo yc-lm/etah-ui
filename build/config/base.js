@@ -42,7 +42,9 @@ module.exports = {
 		}),
 		new VueLoaderPlugin(),
 		// use defineOptions https://github.com/sxzz/unplugin-vue-define-options
-		//require('unplugin-vue-define-options/webpack')(),
+		require('unplugin-vue-define-options/webpack')({
+			include: [/\.vue$/, /\.vue\?vue/]
+		}),
 		new CaseSensitivePathsPlugin(),
 		new DefinePlugin({
 			// vue3 feature flags <http://link.vuejs.org/feature-flags>
@@ -87,14 +89,14 @@ module.exports = {
 			{
 				test: /\.tsx?$/,
 				use: [
-					'thread-loader',
+					//'thread-loader',
 					'babel-loader',
 					{
 						loader: 'ts-loader',
 						options: {
 							transpileOnly: true,
-							appendTsSuffixTo: ['\\.vue$'],
-							happyPackMode: true
+							appendTsSuffixTo: ['\\.vue$']
+							//happyPackMode: true
 						}
 					}
 				]
