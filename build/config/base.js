@@ -89,14 +89,14 @@ module.exports = {
 			{
 				test: /\.tsx?$/,
 				use: [
-					//'thread-loader',
+					'thread-loader',
 					'babel-loader',
 					{
 						loader: 'ts-loader',
 						options: {
 							transpileOnly: true,
-							appendTsSuffixTo: ['\\.vue$']
-							//happyPackMode: true
+							appendTsSuffixTo: ['\\.vue$'],
+							happyPackMode: true
 						}
 					}
 				]
