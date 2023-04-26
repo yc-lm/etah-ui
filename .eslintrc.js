@@ -2,8 +2,7 @@ module.exports = {
 	env: {
 		browser: true,
 		es6: true,
-		node: true,
-		'vue/setup-compiler-macros': true
+		node: true
 	},
 
 	// the ts-eslint recommended ruleset sets the parser so we need to set it back

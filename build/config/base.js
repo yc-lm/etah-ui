@@ -89,14 +89,14 @@ module.exports = {
 			{
 				test: /\.tsx?$/,
 				use: [
-					'thread-loader',
+					//'thread-loader',// 使用defineOptions插件不支持多进程
 					'babel-loader',
 					{
 						loader: 'ts-loader',
 						options: {
 							transpileOnly: true,
-							appendTsSuffixTo: ['\\.vue$'],
-							happyPackMode: true
+							appendTsSuffixTo: ['\\.vue$']
+							//happyPackMode: true
 						}
 					}
 				]
