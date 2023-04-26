@@ -1,0 +1,14 @@
+@import './mixin';
+
+$min-opacity: 1 !default;
+$max-opacity: 10 !default;
+
+// bTitle
+@for $num from $min-opacity through $max-opacity {
+	.col-b-title-#{$num} {
+		@include title-color-opacity($num);
+	}
+	.col-bg-title-#{$num} {
+		@include title-background-opacity($num);
+	}
+}

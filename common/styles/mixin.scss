@@ -1,0 +1,15 @@
+@mixin title-color-opacity($opacity) {
+	color: $bTitleCol;
+	color: rgba($bTitleCol, $opacity / 1000%);
+}
+
+@mixin title-background-opacity($opacity) {
+	background-color: $bTitleCol;
+	background-color: rgba($bTitleCol, $opacity / 1000%);
+}
+
+@mixin rotate-img($deg, $rotation) {
+	transform: rotate($deg);
+	transform: rotate($deg);
+	filter: progid:dximagetransform.microsoft.basicimage(rotation=$rotation);
+}
