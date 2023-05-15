@@ -7,8 +7,8 @@
 		"build": "node build/commands/build.js",
 		"build:rp": "node build/commands/build.js --with=report",
 		"lint": "npm run lint:js && npm run lint:style",
-		"lint:js": "eslint --ext .ts,.js,.vue src --fix",
-		"lint:style": "stylelint \"./src/**/*.vue\" \"./src/**/*.scss\" --fix",
+		"lint:js": "eslint --ext .ts,.js,.vue packages --fix && eslint --ext .ts,.js,.vue example/src --fix",
+		"lint:style": "stylelint \"./example/src/**/*.vue\" \"./example/src/**/*.scss\" \"./packages/**/*.scss\" \"./packages/**/*.vue\" --fix",
 		"prepare": "husky install"
 	},
 	"files": [
